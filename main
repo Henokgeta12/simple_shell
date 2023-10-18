@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+/*
+ * main - Entry point.
+ *
+ *Description: Read lines from stdin and prints
+ *
+ * Return: 0 on success
+ */
+ssize_t own_getline(char **lineptr, size_t *n, FILE *stream);
+int main(void)
+{
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
+	while ((read = own_getline(&line, &len, stdin)) != -1)
+	{
+		printf("Read %ld characters: %s", (long)read, line);
+	}
+	free(line);
+
+	return (0);
+}
